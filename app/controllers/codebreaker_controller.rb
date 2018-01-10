@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-require_relative './base_controller.rb'
 require 'codebreaker'
+require_relative './base_controller.rb'
+
 
 class CodebreakerController < BaseController
   attr_reader :hints

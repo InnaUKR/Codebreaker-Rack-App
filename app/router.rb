@@ -2,7 +2,7 @@
 
 require_relative 'controllers/codebreaker_controller.rb'
 require 'erb'
-require 'codebreaker'
+#require 'codebreaker'
 
 class Router
   attr_reader :request

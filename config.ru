@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require './app/router'
+require 'codebreaker'
 use Rack::Session::Cookie, key: 'rack.session',
                            path: '/',
                            expire_after: 2_592_000,

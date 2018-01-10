@@ -1,0 +1,21 @@
+GIT
+  remote: https://github.com/InnaUKR/cb
+  revision: 46d24385fa700309900b9d9289843b3a1c348b72
+  branch: dev
+  specs:
+    codebreaker (0.1.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    rack (2.0.3)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  codebreaker!
+  rack
+
+BUNDLED WITH
+   1.16.1
