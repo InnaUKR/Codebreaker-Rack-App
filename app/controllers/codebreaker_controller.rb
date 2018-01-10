@@ -28,7 +28,6 @@ class CodebreakerController < BaseController
       @request.session[:guesses] << guess_code
       pluses_numb, minuses_numb = game.mark(guess_code)
       @request.session[:answer] << [pluses_numb, minuses_numb]
-      puts game.win?(pluses_numb)
       return redirect_to('/win_game') if game.win?(pluses_numb)
       return redirect_to('/lose_game') if game.attempts_numb.zero?
     end
