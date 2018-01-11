@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-gem 'rack'
-gem 'codebreaker', :git => 'https://github.com/InnaUKR/cb', :branch => 'dev'
 ruby '2.4.1'
-gem 'bundler', '~> 1.16'
+gem 'rack'
+gem 'bundler', '~> 1.15'
+gem 'codebreaker', :git => 'https://github.com/InnaUKR/cb', :branch => 'dev'
