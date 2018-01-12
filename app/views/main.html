@@ -1,9 +1,18 @@
 <html>
   <head>
     <title>Rack Codebreaker</title>
+    <link href="/assets/stylesheets/application.css" rel="stylesheet">
   </head>
   <body>
-    <h1>Rack Codebreaker</h1>
-      <a href="/choose_difficulty">Start new game</a>
+    <h1>Codebreaker App</h1>
+    <center>
+      <form action="/choose_difficulty">
+        <input type="submit" value="Start new game" />
+      </form>
+
+      <form action="/statistics">
+        <input type="submit" value="Statistics" />
+      </form>
+    </center>
   </body>
 </html>

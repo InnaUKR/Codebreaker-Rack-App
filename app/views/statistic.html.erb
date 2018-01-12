@@ -1,24 +1,32 @@
 <html>
-  <table style="width:60%">
-    <tr>
-      <th>User</th>
-      <th>Win</th>
-      <th>Difficulty</th>
-      <th>Attempts left</th>
-      <th>Hints left</th>
-    </tr>
-
-    <%@statistic.each_value do |user| %>
+  <head>
+    <title>Rack Codebreaker</title>
+    <link href="/assets/stylesheets/application.css" rel="stylesheet">
+  </head>
+  <body>
+    <form action="/">
+      <input type="submit" value="Home Page" />
+    </form>
+    <table>
+      <h1>Codebreaker App</h1>
+      <h1>Statistics:</h1>
       <tr>
-        <td><%= user[:user_name]%></td>
-        <td><%= user[:win]%></td>
-        <td><%= user[:difficulty]%></td>
-        <td><%= user[:attempts_number]%></td>
-        <td><%= user[:hints_number]%></td>
+        <th>User</th>
+        <th>Win</th>
+        <th>Difficulty</th>
+        <th>Attempts left</th>
+        <th>Hints left</th>
       </tr>
-    <% end %>
-  </table>
-  
-<a href="/">Home Page</a>
 
+      <%@statistic.each_value do |user| %>
+        <tr>
+          <td><%= user[:user_name]%></td>
+          <td><%= user[:win]%></td>
+          <td><%= user[:difficulty]%></td>
+          <td><%= user[:attempts_number]%></td>
+          <td><%= user[:hints_number]%></td>
+        </tr>
+      <% end %>
+    </table>
+  </body>
 </html>

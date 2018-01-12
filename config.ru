@@ -7,4 +7,5 @@ use Rack::Session::Cookie, key: 'rack.session',
                            expire_after: 2_592_000,
                            secret: 'helloworld'
 use Rack::Reloader, 0
+use Rack::Static, urls: ['/assets/stylesheets'], root: 'app'
 run Router

@@ -28,7 +28,7 @@ class Router
     when '/lose_game' then show('lose_game')
     when '/save_form' then show('save')
     when '/save' then @controller.save
-    when '/statistic' then @controller.statistic
+    when '/statistics' then @controller.statistic
     else
       not_found
     end
