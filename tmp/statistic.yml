@@ -1,0 +1,13 @@
+---
+:1:
+  :user_name: inna
+  :win: true
+  :difficulty: hard
+  :attempts_number: 6
+  :hints_number: 0
+:2:
+  :user_name: Inna
+  :win: true
+  :difficulty: easy
+  :attempts_number: 26
+  :hints_number: 0

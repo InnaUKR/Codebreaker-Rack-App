@@ -5,6 +5,7 @@ require_relative './base_controller.rb'
 
 
 class CodebreakerController < BaseController
+  PATH = File.expand_path('../../../tmp/statistic.yml', __FILE__)
   attr_reader :hints
 
   def set_difficulty
@@ -40,6 +41,28 @@ class CodebreakerController < BaseController
     redirect_to('/play')
   end
 
+  def save
+    data = load_statistic
+
+    id = (data.count + 1).to_s.to_sym
+
+    current_game = {}
+    current_game[:user_name] = request.params['user_name']
+    p pluses_number = request.session[:answer]
+    current_game[:win] = game.win?(pluses_number.last[0])
+    current_game[:difficulty] = request.session[:difficulty]
+    current_game[:attempts_number] = game.attempts_numb
+    current_game[:hints_number] = game.hints_numb
+    data[id] = current_game
+    File.write(PATH, data.to_yaml)
+    redirect_to('/statistic')
+  end
+
+  def statistic
+    @statistic = load_statistic
+    show('statistic')
+  end
+
   private
 
   def game
@@ -58,5 +81,10 @@ class CodebreakerController < BaseController
     @hints_numb = game.hints_numb
     @hints = @request.session[:hints]
     @answer = @request.session[:answer]
+  end
+
+  def load_statistic
+    yaml_string = File.read(PATH)
+    YAML.load(yaml_string)
   end
 end
