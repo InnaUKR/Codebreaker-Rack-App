@@ -1,0 +1,4 @@
+#folders
+tmp/
+vendor/bundle/
+.ruby-gemset

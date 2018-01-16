@@ -3,7 +3,6 @@
 require 'codebreaker'
 require_relative './base_controller.rb'
 
-
 class CodebreakerController < BaseController
   PATH = File.expand_path('../../../tmp/statistic.yml', __FILE__)
   attr_reader :hints
@@ -36,6 +35,15 @@ class CodebreakerController < BaseController
     redirect_to('/play')
   end
 
+  def code_handling(guess_code)
+    game.attempts_numb -= 1
+    @request.session[:guesses] << guess_code
+    pluses_numb, minuses_numb = game.mark(guess_code)
+    @request.session[:answer] << [pluses_numb, minuses_numb]
+    return redirect_to('/win_game') if game.win?(pluses_numb)
+    return redirect_to('/lose_game') if game.attempts_numb.zero?
+  end
+
   def hint
     @request.session[:hints] << game.take_hint! if game.hints_numb.positive?
     redirect_to('/play')
@@ -43,13 +51,11 @@ class CodebreakerController < BaseController
 
   def save
     data = load_statistic
-
     id = (data.count + 1).to_s.to_sym
-
     current_game = {}
     current_game[:user_name] = request.params['user_name']
-    p pluses_number = request.session[:answer]
-    current_game[:win] = game.win?(pluses_number.last[0])
+    pluses_number = request.session[:answer].last[0]
+    current_game[:win] = game.win?(pluses_number)
     current_game[:difficulty] = request.session[:difficulty]
     current_game[:attempts_number] = game.attempts_numb
     current_game[:hints_number] = game.hints_numb
@@ -85,6 +91,6 @@ class CodebreakerController < BaseController
 
   def load_statistic
     yaml_string = File.read(PATH)
-    YAML.load(yaml_string)
+    YAML.safe_load(yaml_string, [Symbol])
   end
 end
