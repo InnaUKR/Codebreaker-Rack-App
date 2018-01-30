@@ -20,14 +20,14 @@ class Router
     when '/' then show('main')
     when '/choose_difficulty' then show('choose_difficulty')
     when '/set_difficulty' then controller.set_difficulty
-    when '/play' then @controller.play
-    when '/make_guess' then @controller.make_guess
-    when '/hint' then @controller.hint
+    when '/play' then controller.play
+    when '/make_guess' then controller.make_guess
+    when '/hint' then controller.hint
     when '/win_game' then show('win_game')
     when '/lose_game' then show('lose_game')
     when '/save_form' then show('save')
-    when '/save' then @controller.save
-    when '/statistic' then @controller.statistic
+    when '/save' then controller.save
+    when '/statistic' then controller.statistic
     else
       not_found
     end
@@ -41,6 +41,6 @@ class Router
   end
 
   def not_found(msg = 'Not Found')
-    [404, { 'Content-Type' => 'text/plain' }, [msg]]
+    Rack::Response.new([msg], 404)
   end
 end

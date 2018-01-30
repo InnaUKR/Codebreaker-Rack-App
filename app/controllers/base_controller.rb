@@ -12,7 +12,7 @@ class BaseController
   end
 
   def redirect_to(uri)
-    [302, { 'Location' => uri }, []]
+    Rack::Response.new([], 302, 'Location' => uri)
   end
 
   private
