@@ -1,0 +1,23 @@
+<html>
+  <head>
+    <title>Rack Codebreaker</title>
+    <link href="/assets/stylesheets/application.css" rel="stylesheet">
+  </head>
+  <body>
+    <form action="/">
+      <input type="submit" value="Home Page" />
+    </form>
+    <h1>Codebreaker App</h1>
+    <center>
+      <form action="/set_difficulty" method="post">
+        <label for="difficulty">Difficulty: </label>
+          <select name="difficulty">
+            <option value="easy">easy</option>
+            <option value="medium" selected>medium</option>
+            <option value="hard">hard</option>
+          </select>
+        <input type="submit" value="Go" />
+      </form>
+    </center>
+  </body>
+<html>

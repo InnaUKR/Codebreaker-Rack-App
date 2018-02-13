@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <title>Rack Codebreaker</title>
+    <link href="/assets/stylesheets/application.css" rel="stylesheet">
+  </head>
+  <body>
+    <form action="/">
+      <input type="submit" value="Home Page" />
+    </form>
+    <h1>Codebreaker App</h1>
+    <div class="conteiner">
+      <h2>
+        <%= @hints_numb%> hints
+        <span id="attempts"><%= @attempts_numb%> attempts</span>
+      </h2>
+      <h1>Guess code with number from 1 to 6</h1>
+      <center>
+        <form action="/make_guess" method="post">
+          <input name='enter_numbers' size="30" value="" autofocus/>
+          <input type="submit" value="Submit" />
+        </form>
+      </center>
+
+      <h2>Hints: <%= @hints%></h2>
+      <form action ="/hint" method="post">
+        <%if @hints_numb.positive? %>
+          <input type="submit" value="Hint"/>
+        <% else %>
+          <input type="submit" value="Hint" disabled/>
+        <% end %>
+      </form>
+
+      <h1>Attempts:</h1>
+
+      <table style="width:60%">
+        <tr>
+          <th>Code</th>
+          <th>Pluses</th>
+          <th>Minuses</th>
+        </tr>
+
+        <%(0...@inputted_guesses.length).each do |index| %>
+          <tr>
+            <td><%= @inputted_guesses[index]%></td>
+            <td><%= @answer[index][0] %></td>
+            <td><%= @answer[index][1] %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  </body>
+</html>
